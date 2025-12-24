@@ -2,11 +2,9 @@ from fastapi import APIRouter, HTTPException, status, Depends
 from datetime import datetime, timedelta
 from models.user import User, UserCreate, UserLogin, UserResponse, UserRole, AuthProvider
 from utils.auth import hash_password, verify_password, create_access_token, get_current_user
+from database import db
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
-
-# Database will be injected from main app
-from server import db
 
 @router.post("/register", response_model=dict)
 async def register(user_data: UserCreate):
