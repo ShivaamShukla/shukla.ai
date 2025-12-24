@@ -7,7 +7,7 @@ import logging
 from pathlib import Path
 
 # Import routes
-from routes import auth, projects, admin
+from routes import auth, projects, admin, conversations, models, mcp_tools
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -39,6 +39,9 @@ app.include_router(api_router)
 app.include_router(auth.router)
 app.include_router(projects.router)
 app.include_router(admin.router)
+app.include_router(conversations.router)
+app.include_router(models.router)
+app.include_router(mcp_tools.router)
 
 # CORS middleware
 app.add_middleware(
