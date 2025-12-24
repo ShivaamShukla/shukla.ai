@@ -3,17 +3,13 @@ from typing import List
 from models.project import Project, ProjectCreate, ProjectUpdate, ProjectStatus
 from models.activity import ActivityCreate
 from utils.auth import get_current_user
-from motor.motor_asyncio import AsyncIOMotorClient
 from bson import ObjectId
 from datetime import datetime
-import os
 
 router = APIRouter(prefix="/api/projects", tags=["projects"])
 
-# Database connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# Database will be injected from main app
+from server import db
 
 @router.get("/", response_model=List[Project])
 async def get_user_projects(current_user: dict = Depends(get_current_user)):
