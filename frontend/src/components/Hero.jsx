@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Mail } from 'lucide-react';
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-white to-gray-50">
       {/* Animated background elements */}
@@ -35,6 +38,7 @@ const Hero = () => {
           <div className="space-y-4 pt-8">
             {/* Google Sign-in */}
             <Button
+              onClick={() => navigate('/register')}
               className="w-full max-w-md bg-black hover:bg-gray-800 text-white py-6 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg"
             >
               <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
@@ -62,6 +66,7 @@ const Hero = () => {
             <div className="flex gap-4">
               <Button
                 variant="outline"
+                onClick={() => navigate('/register')}
                 className="flex-1 py-6 rounded-xl border-2 hover:bg-gray-50 transition-all duration-300 hover:scale-105"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -70,6 +75,7 @@ const Hero = () => {
               </Button>
               <Button
                 variant="outline"
+                onClick={() => navigate('/register')}
                 className="flex-1 py-6 rounded-xl border-2 hover:bg-gray-50 transition-all duration-300 hover:scale-105"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -88,6 +94,7 @@ const Hero = () => {
             {/* Email Sign-in */}
             <Button
               variant="outline"
+              onClick={() => navigate('/login')}
               className="w-full max-w-md py-6 rounded-xl border-2 hover:bg-gray-50 transition-all duration-300 hover:scale-105"
             >
               <Mail className="w-5 h-5 mr-3" />
