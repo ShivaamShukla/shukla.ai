@@ -36,6 +36,8 @@ class User(BaseModel):
     password: Optional[str] = None
     projects: List[str] = []
     subscription: Subscription = Subscription()
+    credits: float = 100.0  # Free starting credits
+    totalCreditsUsed: float = 0.0
     createdAt: datetime = Field(default_factory=datetime.utcnow)
     updatedAt: datetime = Field(default_factory=datetime.utcnow)
     lastLogin: Optional[datetime] = None
