@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import { Send, Paperclip, Mic, Settings, Github, Plus, MessageSquare, ChevronDown, Sparkles } from 'lucide-react';
-import { Button } from './ui/button';
+import { Button } from '../components/ui/button';
 import { toast } from 'sonner';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
