@@ -4,17 +4,13 @@ from models.user import UserResponse, UserRole
 from models.project import Project
 from models.activity import Activity
 from utils.auth import get_current_admin
-from motor.motor_asyncio import AsyncIOMotorClient
 from bson import ObjectId
 from datetime import datetime, timedelta
-import os
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
 
-# Database connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# Database will be injected from main app
+from server import db
 
 @router.get("/users", response_model=List[UserResponse])
 async def get_all_users(current_admin: dict = Depends(get_current_admin)):
