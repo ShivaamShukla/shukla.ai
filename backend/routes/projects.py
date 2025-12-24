@@ -5,11 +5,9 @@ from models.activity import ActivityCreate
 from utils.auth import get_current_user
 from bson import ObjectId
 from datetime import datetime
+from database import db
 
 router = APIRouter(prefix="/api/projects", tags=["projects"])
-
-# Database will be injected from main app
-from server import db
 
 @router.get("/", response_model=List[Project])
 async def get_user_projects(current_user: dict = Depends(get_current_user)):
