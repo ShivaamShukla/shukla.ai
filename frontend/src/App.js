@@ -6,7 +6,7 @@ import { Toaster } from './components/ui/sonner';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
+import ChatDashboard from './pages/ChatDashboard';
 import AdminPanel from './pages/AdminPanel';
 import './App.css';
 
@@ -26,7 +26,7 @@ function App() {
               path="/dashboard"
               element={
                 <ProtectedRoute>
-                  <Dashboard />
+                  <ChatDashboard />
                 </ProtectedRoute>
               }
             />
