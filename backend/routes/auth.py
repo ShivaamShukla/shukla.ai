@@ -2,18 +2,13 @@ from fastapi import APIRouter, HTTPException, status, Depends
 from datetime import datetime, timedelta
 from models.user import User, UserCreate, UserLogin, UserResponse, UserRole, AuthProvider
 from utils.auth import hash_password, verify_password, create_access_token, get_current_user
-from motor.motor_asyncio import AsyncIOMotorClient
-import os
-from typing import Dict
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
 
-# Database connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# Database will be injected from main app
+from server import db
 
-@router.post("/register", response_model=Dict)
+@router.post("/register", response_model=dict)
 async def register(user_data: UserCreate):
     """Register a new user"""
     # Check if user already exists
