@@ -6,11 +6,9 @@ from models.activity import Activity
 from utils.auth import get_current_admin
 from bson import ObjectId
 from datetime import datetime, timedelta
+from database import db
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
-
-# Database will be injected from main app
-from server import db
 
 @router.get("/users", response_model=List[UserResponse])
 async def get_all_users(current_admin: dict = Depends(get_current_admin)):
